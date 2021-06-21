@@ -1,0 +1,26 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - '**/Gemfile'
+    - 'vendor/**/*'
+
+Layout/LineLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+Style/Documentation:
+  Enabled: false
+Style/PerlBackrefs:
+  Enabled: false
+Style/SymbolArray:
+  Enabled: false

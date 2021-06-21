@@ -1,0 +1,15 @@
+development:
+  database: attensi_ec_game_development
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+
+test: &test
+  database: attensi_ec_game_test
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  username:
+  password:
