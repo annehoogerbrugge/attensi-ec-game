@@ -17,6 +17,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'factory_bot_rails'
   gem 'pry'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'rubocop'
@@ -27,7 +28,6 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'factory_bot_rails'
   gem 'faker'
   gem 'shoulda-matchers'
 end
