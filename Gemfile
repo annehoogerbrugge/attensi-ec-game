@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pg'
 gem 'puma'
 gem 'jsonapi-serializer'
+gem 'rswag'
 
 group :development do
   gem 'listen', '~> 3.3'
@@ -17,6 +18,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'factory_bot_rails'
   gem 'pry'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'rubocop'
@@ -27,7 +29,6 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'factory_bot_rails'
   gem 'faker'
   gem 'shoulda-matchers'
 end

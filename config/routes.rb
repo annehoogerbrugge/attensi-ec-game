@@ -1,3 +1,17 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+  get '/', to: redirect('/api-docs')
+
+  namespace :api do
+    namespace :v1 do
+      resources :players, only: [:create, :index] do
+        get :impact_report, on: :collection
+      end
+
+      resources :scores, only: [:create, :index] do
+        post :weekly_summary, on: :collection
+      end
+    end
+  end
 end
