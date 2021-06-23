@@ -1,0 +1,161 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/players": {
+      "get": {
+        "summary": "Lists all players",
+        "tags": [
+          "Player"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "players retrieved"
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a player",
+        "tags": [
+          "Player"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "player",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "player created"
+          },
+          "400": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
+    "/api/v1/scores": {
+      "get": {
+        "summary": "Lists all scores",
+        "tags": [
+          "Score"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "scores retrieved"
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a score for a player",
+        "tags": [
+          "Score"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "score",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "player_id": {
+                  "type": "integer",
+                  "description": "The player id"
+                },
+                "points": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 100,
+                  "description": "The score; integer between 0 and 100"
+                },
+                "start_time": {
+                  "type": "string",
+                  "format": "date_time",
+                  "description": "Starting date in format: yy-mm-ddThh:mm:ss (e.g. 2021-06-22T20:00:00)"
+                },
+                "playing_time": {
+                  "type": "number",
+                  "format": "float",
+                  "description": "The time spent in minutes"
+                }
+              },
+              "required": [
+                "player_id",
+                "points",
+                "start_time",
+                "playing_time"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "score created"
+          },
+          "400": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
+    "/api/v1/scores/weekly_summary": {
+      "post": {
+        "summary": "Weekly summary",
+        "tags": [
+          "Score"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "week_number",
+            "in": "body",
+            "type": "integer",
+            "maximum": 52
+          },
+          {
+            "name": "stat_option",
+            "in": "body",
+            "type": "string",
+            "description": "Choose the result wanted; single_points, total_points, single_playing_time, or total_playing_time",
+            "required": [
+              "week_number",
+              "stat_option"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "weekly summary top list"
+          }
+        }
+      }
+    }
+  }
+}

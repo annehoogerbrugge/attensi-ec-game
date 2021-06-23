@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pg'
 gem 'puma'
 gem 'jsonapi-serializer'
+gem 'rswag'
 
 group :development do
   gem 'listen', '~> 3.3'
